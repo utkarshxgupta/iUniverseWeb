@@ -1,0 +1,5 @@
+{
+  "name": "Employee Financial Dashboard",
+  "description": "A comprehensive financial dashboard for employees to view salary, benefits, investments, and loans with privacy toggle features.",
+  "requestFramePermissions": []
+}
