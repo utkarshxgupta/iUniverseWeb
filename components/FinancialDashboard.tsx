@@ -20,9 +20,9 @@ const MOCK_SALARY: SalaryData = {
 };
 
 const MOCK_EMPLOYEE: EmployeeData = {
-  name: "Utkarsh Sharma",
+  name: "Utkarsh Gupta",
   id: "EMP102345",
-  designation: "Senior Software Engineer",
+  designation: "HR Manager",
   joiningDate: "12 Aug 2021"
 };
 
@@ -33,24 +33,27 @@ const MOCK_RETIREMENT: RetirementData = {
 };
 
 const PromoBanner: React.FC = () => (
-  <div className="bg-gradient-to-br from-[#1e3a8a] to-[#172554] rounded-[2rem] p-8 text-white flex flex-col md:flex-row items-center justify-between shadow-2xl shadow-blue-900/20 relative overflow-hidden group cursor-pointer hover:scale-[1.005] transition-transform duration-500">
+  <div className="bg-gradient-to-br from-[#8B3E05] via-[#ea580c] to-[#f97316] rounded-[2rem] p-8 text-white flex flex-col md:flex-row items-center justify-between shadow-2xl shadow-orange-900/20 relative overflow-hidden group cursor-pointer hover:scale-[1.005] transition-transform duration-500">
     {/* Decorative Elements */}
     <div className="absolute top-0 right-0 w-80 h-80 bg-white opacity-5 rounded-full translate-x-1/4 -translate-y-1/4 blur-3xl"></div>
-    <div className="absolute bottom-0 left-0 w-56 h-56 bg-blue-400 opacity-10 rounded-full -translate-x-1/4 translate-y-1/4 blur-2xl"></div>
+    <div className="absolute bottom-0 left-0 w-56 h-56 bg-orange-400 opacity-10 rounded-full -translate-x-1/4 translate-y-1/4 blur-2xl"></div>
     
     <div className="relative z-10 flex items-start gap-6 max-w-2xl">
       <div className="p-4 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10 shadow-inner shrink-0 hidden md:block">
-        <TrendingUp size={28} className="text-blue-200" />
+        <TrendingUp size={28} className="text-orange-200" />
       </div>
       <div>
+        <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-white/10 backdrop-blur-sm border border-white/20 text-[10px] font-bold uppercase tracking-wider text-orange-100 mb-2">
+           ICICI Direct
+        </div>
         <h3 className="text-xl font-bold text-white mb-1 tracking-tight">Zero Brokerage Trading</h3>
-        <p className="text-blue-100 text-sm leading-relaxed opacity-90">
+        <p className="text-orange-100 text-sm leading-relaxed opacity-90">
           Open a 3-in-1 account today and get free equity delivery for 1 year.
         </p>
       </div>
     </div>
     
-    <button className="relative z-10 mt-6 md:mt-0 px-6 py-3 bg-white text-[#1e3a8a] font-bold rounded-xl text-xs hover:bg-blue-50 transition-colors flex items-center gap-2 shadow-lg shrink-0">
+    <button className="relative z-10 mt-6 md:mt-0 px-6 py-3 bg-white text-[#8B3E05] font-bold rounded-xl text-xs hover:bg-orange-50 transition-colors flex items-center gap-2 shadow-lg shrink-0">
       Open Account <ArrowRight size={14} />
     </button>
   </div>

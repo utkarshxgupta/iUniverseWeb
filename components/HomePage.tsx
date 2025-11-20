@@ -571,7 +571,7 @@ const LeaveWidget: React.FC = () => {
 
             <div className="mt-8 flex gap-3">
                <button className="flex-1 bg-slate-900 text-white h-12 rounded-xl font-bold text-sm hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/20 hover:shadow-slate-900/40 flex items-center justify-center gap-2 active:scale-95">
-                 Apply Now <ArrowRight size={16} />
+                 Apply Leave <ArrowRight size={16} />
                </button>
                <button className="px-5 h-12 rounded-xl border border-slate-200 text-slate-600 font-bold text-sm hover:bg-slate-50 transition-colors">
                  Holiday List
@@ -642,23 +642,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
   return (
-    <div className="bg-slate-50 min-h-screen pb-20 font-sans selection:bg-orange-100 selection:text-orange-900 relative">
-      
-      {/* Background: Orange to White Gradient ending in Mosaic Grid */}
-      <div className="fixed inset-0 z-0 pointer-events-none bg-white">
-          {/* Top Orange Gradient */}
-          <div className="absolute top-0 left-0 right-0 h-[600px] bg-gradient-to-b from-orange-100/60 via-orange-50/20 to-transparent"></div>
-          
-          {/* Mosaic Grid Pattern (Fades in as you scroll down/orange fades out) */}
-          <div className="absolute inset-0 opacity-[0.03]" 
-               style={{ 
-                   backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`, 
-                   backgroundSize: '32px 32px',
-                   maskImage: 'linear-gradient(to bottom, transparent 0%, black 40%)',
-                   WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 40%)'
-               }}>
-          </div>
-      </div>
+    <div className="pb-20 font-sans selection:bg-orange-100 selection:text-orange-900 relative">
       
       {isChatOpen && <ChatInterface onClose={() => setIsChatOpen(false)} />}
 
@@ -673,7 +657,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="flex flex-col gap-6">
               
               {/* Digital Visiting Card (iNetwork Style) */}
-              <div className="w-full bg-gradient-to-br from-[#8B3E05] via-[#ea580c] to-[#f97316] rounded-[2rem] p-8 text-white shadow-2xl shadow-orange-900/20 relative overflow-hidden group hover:scale-[1.005] transition-transform duration-500 border-[4px] border-white ring-1 ring-slate-100/50 min-h-[280px] flex flex-col justify-between">
+              <div className="w-full bg-gradient-to-br from-[#8B3E05] via-[#ea580c] to-[#f97316] rounded-[2rem] p-8 text-white shadow-2xl shadow-orange-900/20 relative overflow-hidden group hover:scale-[1.005] transition-transform duration-500 border-[4px] border-white ring-1 ring-slate-100/50 h-[280px] flex flex-col justify-between">
                   
                   {/* Decorative Background */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
@@ -723,45 +707,49 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
                   {/* iCare Button */}
                   <button 
                     onClick={() => setIsChatOpen(true)}
-                    className="relative h-32 w-full rounded-[2.5rem] bg-[#FFF9F6] border border-orange-100/50 p-5 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 group overflow-hidden"
+                    className="relative h-28 w-full rounded-[2.5rem] bg-white border border-slate-100 p-4 transition-all duration-300 hover:shadow-[0_20px_40px_rgb(0,0,0,0.05)] hover:-translate-y-1 hover:border-orange-200 group flex items-center justify-between overflow-hidden"
                   >
-                     {/* Top Left Icon: Sparkles in White Circle */}
-                     <div className="absolute left-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-sm text-brand-orange group-hover:scale-110 transition-transform">
-                        <Sparkles size={20} strokeWidth={2.5} />
+                     <div className="absolute inset-0 bg-gradient-to-br from-orange-50/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                     
+                     {/* Icon Left */}
+                     <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-orange-50 text-brand-orange group-hover:scale-110 transition-transform shadow-sm border border-orange-100/50">
+                        <Sparkles size={24} strokeWidth={2} />
                      </div>
 
-                     {/* Top Right Icon: Bubble Outline */}
-                     <div className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-orange-200 text-orange-300 bg-transparent group-hover:text-brand-orange group-hover:border-brand-orange transition-colors">
-                         <MessageCircle size={20} strokeWidth={2} />
+                     {/* Text Center */}
+                     <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-2">
+                        <span className="text-slate-800 font-extrabold text-lg tracking-tight leading-none group-hover:text-brand-orange transition-colors mb-1">Ask iCare</span>
+                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest group-hover:text-orange-400/80 transition-colors">AI Assistant</span>
                      </div>
 
-                     {/* Text: Centered */}
-                     <div className="absolute inset-0 flex flex-col items-center justify-center pt-8">
-                        <span className="block text-slate-800 font-extrabold text-lg tracking-tight mb-1 group-hover:text-brand-orange transition-colors">Ask iCare</span>
-                        <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider group-hover:text-orange-400">AI ASSISTANT</span>
+                     {/* Icon Right */}
+                     <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-slate-100 text-slate-300 group-hover:border-orange-200 group-hover:text-orange-300 transition-colors bg-white shadow-sm">
+                         <MessageCircle size={18} strokeWidth={2.5} />
                      </div>
                   </button>
 
                   {/* Finance Button */}
                   <button 
                     onClick={() => onNavigate('dashboard')} 
-                    className="relative h-32 w-full rounded-[2.5rem] bg-[#161B28] p-5 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 group overflow-hidden"
+                    className="relative h-28 w-full rounded-[2.5rem] bg-[#1e293b] p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:shadow-slate-900/20 group flex items-center justify-between overflow-hidden"
                   >
-                      {/* Top Left Icon: Grid in Glass Box */}
-                     <div className="absolute left-6 top-6 flex h-10 w-10 items-center justify-center rounded-2xl bg-white/10 text-white group-hover:bg-white/20 transition-colors backdrop-blur-md border border-white/5">
-                        <LayoutDashboard size={20} strokeWidth={2.5} />
+                      <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-[#1e293b] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      
+                      {/* Icon Left */}
+                     <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-white backdrop-blur-sm border border-white/10 group-hover:bg-white/20 transition-colors shadow-inner">
+                        <LayoutDashboard size={24} strokeWidth={2} />
                      </div>
 
-                     {/* Top Right Icon: Arrow in Dark Circle */}
-                     <div className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-slate-500 border border-white/5 group-hover:bg-brand-orange group-hover:text-white group-hover:border-brand-orange transition-all">
+                     {/* Text Center */}
+                     <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-2">
+                         <span className="text-white font-extrabold text-lg tracking-tight leading-none mb-1">Finance</span>
+                         <span className="text-[10px] text-slate-400 font-bold uppercase tracking-widest group-hover:text-slate-300 transition-colors">Dashboard</span>
+                      </div>
+
+                      {/* Icon Right */}
+                     <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-slate-500 group-hover:bg-brand-orange group-hover:text-white transition-all duration-300 border border-white/5">
                          <ArrowRight size={18} strokeWidth={2.5} />
                      </div>
-
-                     {/* Text: Centered */}
-                     <div className="absolute inset-0 flex flex-col items-center justify-center pt-8">
-                         <span className="block text-white font-extrabold text-lg tracking-tight mb-1">Finance</span>
-                         <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider group-hover:text-slate-300 transition-colors">DASHBOARD</span>
-                      </div>
                   </button>
               </div>
             </div>
