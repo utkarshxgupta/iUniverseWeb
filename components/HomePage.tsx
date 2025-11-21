@@ -89,7 +89,7 @@ const LearningCarousel: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full min-h-[280px] rounded-[2rem] relative overflow-hidden shadow-xl shadow-orange-900/10 group border-[4px] border-white ring-1 ring-slate-100/50">
+    <div className="w-full h-full min-h-[320px] rounded-[2rem] relative overflow-hidden shadow-xl shadow-orange-900/10 group border-[4px] border-white ring-1 ring-slate-100/50">
       {CAROUSEL_SLIDES.map((slide, index) => (
         <div 
           key={slide.id}
@@ -657,7 +657,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             <div className="flex flex-col gap-6">
               
               {/* Digital Visiting Card (iNetwork Style) */}
-              <div className="w-full bg-gradient-to-br from-[#8B3E05] via-[#ea580c] to-[#f97316] rounded-[2rem] p-8 text-white shadow-2xl shadow-orange-900/20 relative overflow-hidden group hover:scale-[1.005] transition-transform duration-500 border-[4px] border-white ring-1 ring-slate-100/50 h-[280px] flex flex-col justify-between">
+              <div className="w-full bg-gradient-to-br from-[#8B3E05] via-[#ea580c] to-[#f97316] rounded-[2rem] p-8 text-white shadow-2xl shadow-orange-900/20 relative overflow-hidden group hover:scale-[1.005] transition-transform duration-500 border-[4px] border-white ring-1 ring-slate-100/50 h-[320px] flex flex-col justify-between">
                   
                   {/* Decorative Background */}
                   <div className="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
@@ -757,7 +757,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
             {/* Right Column: Carousel + Quick Tiles */}
             <div className="flex flex-col gap-6 h-full">
                {/* Carousel Container */}
-               <div className="h-[280px] w-full">
+               <div className="h-[320px] w-full">
                   <LearningCarousel />
                </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, User, ChevronDown, LogOut, Settings, HelpCircle } from 'lucide-react';
+import { Phone, User, ChevronDown, LogOut, Settings, HelpCircle, ChevronRight } from 'lucide-react';
 
 interface NavbarProps {
   onHome?: () => void;
@@ -12,9 +12,9 @@ const NavItem: React.FC<{ label: string; children?: React.ReactNode }> = ({ labe
         {label}
         {children && <ChevronDown size={14} className="opacity-80 group-hover:rotate-180 transition-transform duration-200" />}
       </button>
-      
+
       {children && (
-        <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-hidden">
+        <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50 overflow-visible">
           <div className="py-1">
             {children}
           </div>
@@ -30,6 +30,20 @@ const DropdownLink: React.FC<{ href: string; children: React.ReactNode }> = ({ h
   </a>
 );
 
+const DropdownGroup: React.FC<{ label: string; children: React.ReactNode }> = ({ label, children }) => (
+  <div className="relative group/nested">
+    <button className="w-full flex items-center justify-between px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-brand-orange transition-colors text-left">
+      {label}
+      <ChevronRight size={14} />
+    </button>
+    <div className="absolute left-full top-0 w-56 bg-white rounded-lg shadow-xl border border-gray-100 opacity-0 invisible group-hover/nested:opacity-100 group-hover/nested:visible transition-all duration-200 transform translate-x-2 group-hover/nested:translate-x-0 z-50 overflow-hidden">
+      <div className="py-1">
+        {children}
+      </div>
+    </div>
+  </div>
+);
+
 export const Navbar: React.FC<NavbarProps> = ({ onHome }) => {
   return (
     <nav className="bg-gradient-to-r from-brand-orange to-[#e06d1b] shadow-lg sticky top-0 z-40">
@@ -37,30 +51,48 @@ export const Navbar: React.FC<NavbarProps> = ({ onHome }) => {
         <div className="flex justify-between h-16 items-center">
           {/* Logo Area */}
           <div className="flex items-center gap-2 cursor-pointer" onClick={onHome}>
-            {/* Simulated Logo using text/shapes to avoid external image dependency */}
-            <div className="flex items-center gap-2 bg-white/10 p-2 rounded-lg backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-colors">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-brand-orange font-bold text-xl italic font-serif">
-                i
-              </div>
-              <span className="text-white font-bold text-xl tracking-tight">ICICI Bank</span>
+            <div className="flex items-center gap-2">
+              <img src="/assets/icici-header-logo.png" alt="ICICI Bank" className="h-10 w-auto object-contain" />
             </div>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center h-full space-x-2">
             <NavItem label="My Requests">
-              <DropdownLink href="#">Raise a Request</DropdownLink>
-              <DropdownLink href="#">Track Status</DropdownLink>
-              <DropdownLink href="#">Approval History</DropdownLink>
+              <DropdownGroup label="Personal Information">
+                <DropdownLink href="#">Personal Information Summary</DropdownLink>
+                <DropdownLink href="#">Salary Account Details</DropdownLink>
+                <DropdownLink href="#">Cost Center Updation</DropdownLink>
+                <DropdownLink href="#">PAN Updation</DropdownLink>
+                <DropdownLink href="#">Relatives Declaration</DropdownLink>
+              </DropdownGroup>
+              <DropdownLink href="#">Update Nominee Details</DropdownLink>
+              <DropdownLink href="#">Mobile NOC Letter</DropdownLink>
+              <DropdownLink href="#">Self-help Letters</DropdownLink>
+              <DropdownLink href="#">Resignation</DropdownLink>
+              <DropdownLink href="#">IT Assets</DropdownLink>
+              <DropdownLink href="#">Declaration and Nomination</DropdownLink>
             </NavItem>
             <NavItem label="My Wellness">
-              <DropdownLink href="#">Health Checkup</DropdownLink>
-              <DropdownLink href="#">Insurance Policy</DropdownLink>
-              <DropdownLink href="#">Gym Reimbursement</DropdownLink>
+              <DropdownLink href="#">Creche Facility</DropdownLink>
+              <DropdownGroup label="Emergency Services">
+                <DropdownLink href="#">Emergency Numbers</DropdownLink>
+                <DropdownLink href="#">Emergency Hospitals</DropdownLink>
+              </DropdownGroup>
+              <DropdownLink href="#">Dependent Enrollment</DropdownLink>
+              <DropdownLink href="#">Medical Claim</DropdownLink>
+              <DropdownLink href="#">Cashless Hospitals</DropdownLink>
+              <DropdownLink href="#">Diagnostic Centres</DropdownLink>
+              <DropdownLink href="#">Ambulance Services</DropdownLink>
+              <DropdownLink href="#">Enrollment in Parental Policy</DropdownLink>
+              <DropdownLink href="#">Hospitalization: Non-payable Items</DropdownLink>
+              <DropdownLink href="#">UHID/Health Card (Group Medical Insurance)</DropdownLink>
             </NavItem>
             <NavItem label="Support">
-               <DropdownLink href="#">HR Policy</DropdownLink>
-               <DropdownLink href="#">IT Helpdesk</DropdownLink>
+              <DropdownLink href="#">FAQs</DropdownLink>
+              <DropdownLink href="#">iCare</DropdownLink>
+              <DropdownLink href="#">iHelpdesk</DropdownLink>
+              <DropdownLink href="#">Policies</DropdownLink>
             </NavItem>
           </div>
 
@@ -76,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onHome }) => {
                 <span>Profile</span>
                 <ChevronDown size={16} />
               </button>
-              
+
               {/* Profile Dropdown */}
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 z-50">
                 <div className="p-2">
